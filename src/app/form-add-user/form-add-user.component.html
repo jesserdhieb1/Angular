@@ -1,0 +1,19 @@
+<h1 class="text-center">Create a new accont</h1>
+<form class="w-50 mx-auto" #f="ngForm">
+  <div class="form-group  ">
+    <label  >First name</label>
+    <input type="text" name="FirstName" class="form-control" [(ngModel)]="user.firstName" required minlength="3" #fn="ngModel"
+    pattern="[a-zA-Z]+$"
+    >
+    <br>
+    <div class="alert alert-danger" *ngIf="fn.invalid && fn.touched">
+      <div *ngIf="fn.hasError('required')">*First name is a required field*</div>
+      <div *ngIf="fn.hasError('minlength')">*first name min length is equal to 3*</div>
+      <div *ngIf="fn.hasError('pattern')">*only caracters are allowed*</div>
+    </div>
+  </div>
+
+  <button class="btn btn-outline-success me-4" (click)="save()" [disabled]="f.invalid">save</button>
+
+  <button class="btn btn-outline-warning"(click)="f.reset()">reset</button>
+</form>
