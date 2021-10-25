@@ -9,6 +9,7 @@ import {MainProviderComponent} from "./main-provider/main-provider.component";
 import {MainUserComponent} from "./main-user/main-user.component";
 import {ListUserComponent} from "./list-user/list-user.component";
 import {FormAddUserComponent} from "./form-add-user/form-add-user.component";
+import { LoginComponent } from './login/login.component';
 
 
 const Routes: Routes=[
@@ -18,7 +19,10 @@ const Routes: Routes=[
   {path:'provider',component:MainProviderComponent},
   {path:'product',component:MainProductComponent},
   {path:'subscribe',component:FormAddUserComponent},
+  {path:'login',component:LoginComponent},
   {path:'',component:ContentComponent},
+  {path:'admin',component:LoginComponent},
+
   {path:'**',component:NotFoundComponent}
 ];
 

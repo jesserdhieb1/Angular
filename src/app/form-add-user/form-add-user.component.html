@@ -1,5 +1,5 @@
-<h1 class="text-center">Create a new accont</h1>
-<form class="w-50 mx-auto" #f="ngForm">
+<h1 class="text-center">Create a new account</h1>
+<form class="w-50 mx-auto" #f="ngForm">Nn
   <div class="form-group  ">
     <label  >First name</label>
     <input type="text" name="FirstName" class="form-control" [(ngModel)]="user.firstName" required minlength="3" #fn="ngModel"
@@ -7,13 +7,74 @@
     >
     <br>
     <div class="alert alert-danger" *ngIf="fn.invalid && fn.touched">
-      <div *ngIf="fn.hasError('required')">*First name is a required field*</div>
       <div *ngIf="fn.hasError('minlength')">*first name min length is equal to 3*</div>
       <div *ngIf="fn.hasError('pattern')">*only caracters are allowed*</div>
     </div>
   </div>
-
-  <button class="btn btn-outline-success me-4" (click)="save()" [disabled]="f.invalid">save</button>
-
+  <div class="form-group  ">
+    <label  >Last name</label>
+    <input type="text" name="LastName" class="form-control" [(ngModel)]="user.lastName" required minlength="3" #fnl="ngModel"
+           pattern="[a-zA-Z]+$"
+    >
+    <br>
+    <div class="alert alert-danger" *ngIf="fnl.invalid && fnl.touched">
+      <div *ngIf="fnl.hasError('minlength')">*last name min length is equal to 3*</div>
+      <div *ngIf="fnl.hasError('pattern')">*only caracters are allowed*</div>
+    </div>
+  </div>
+  <div class="form-group  ">
+    <label  >Birth Date</label>
+    <input type="date" name="dob" class="form-control" [(ngModel)]="user.birthDate" required #fndob="ngModel">
+    <br>
+    <div class="alert alert-danger" *ngIf="fndob.invalid && fndob.touched">
+      <div *ngIf="fndob.hasError('required')">*birth date must not be empty*</div>
+    </div>
+  </div>
+    <div class="form-group  ">
+      <label  >Picture</label>
+      <input type="text" name="Picture" class="form-control" [(ngModel)]="user.picture" required #fnpic="ngModel">
+      <br>
+      <div class="alert alert-danger" *ngIf="fnpic.invalid && fnpic.touched">
+        <div *ngIf="fnpic.hasError('required')">*birth date must not be empty*</div>
+      </div>
+  </div>
+  <div class="form-group  ">
+    <label  >Email</label>
+    <input type="text" name="Email" class="form-control" [(ngModel)]="user.email" required  #fne="ngModel" pattern="^[a-zA-Z0-9._-]+@gmail.com">
+    <br>
+    <div class="alert alert-danger" *ngIf="fne.invalid && fne.touched">
+      <div *ngIf="fne.hasError('required')">*email must not be empty*</div>
+      <div *ngIf="fne.hasError('pattern')">*enter a valid email*</div>
+    </div>
+  </div>
+    <div class="form-group  ">
+  <label  >Password</label>
+  <input type="password" name="password" class="form-control" [(ngModel)]="user.password" required  #fnp="ngModel" pattern="^[a-zA-Z0-9]{8,}?">
+  <br>
+  <div class="alert alert-danger" *ngIf="fnp.invalid && fnp.touched">
+    <div *ngIf="fnp.hasError('required')">*password must not be empty*</div>
+    <div *ngIf="fnp.hasError('pattern')">*enter a valid password without special chars*</div>
+  </div>
+    </div>
+  <div class="form-group  ">
+    <label  >Profession</label>
+    <input type="text" name="Profession" class="form-control" [(ngModel)]="user.profession" required  #fnpr="ngModel">
+    <br>
+    <div class="alert alert-danger" *ngIf="fnpr.invalid && fnpr.touched">
+      <div *ngIf="fnpr.hasError('required')">*Profession must not be empty*</div>
+    </div>
+  </div>
+  <div class="form-group  ">
+    <label  >Customer Category</label>
+    <input type="text" name="Category" class="form-control" [(ngModel)]="user.accountCategory" required  #fnc="ngModel" placeholder="Customer"
+    value="Customer"  pattern="Customer"
+    >
+    <br>
+    <div class="alert alert-danger" *ngIf="fnc.invalid && fnc.touched">
+      <div *ngIf="fnc.hasError('required')">*Category must not be empty*</div>
+      <div *ngIf="fnc.hasError('pattern')">*Customer only*</div>
+    </div>
+  </div>
+  <button class="btn btn-outline-success me-4" (click)="save(user)" [disabled]="f.invalid">save</button>
   <button class="btn btn-outline-warning"(click)="f.reset()">reset</button>
 </form>
